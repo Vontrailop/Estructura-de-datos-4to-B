@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        int[] arr = {12, 4, 5, 6, 7, 3, 1, 15};
+        int[] arr = { 12, 4, 5, 10, 6, 7, 3, 1, 15 };
         mergeSort(arr);
         System.out.println("Sorted array:");
         for (int num : arr) {
@@ -31,27 +31,32 @@ public class Main {
     }
 
     public static void merge(int[] arr, int[] left, int[] right) {
-        int nLeft = left.length;
-        int nRight = right.length;
-        int i = 0, j = 0, k = 0;
+        int tamanioIzquierda = left.length;
+        int tamanioDerecha = right.length;
+        int iIzquierda = 0, iDerecha = 0, iPrincipal = 0;
 
         // Combina los elementos de left y right en el arreglo arr
-        while (i < nLeft && j < nRight) {
-            if (left[i] <= right[j]) {
-                arr[k++] = left[i++];
+        while (iIzquierda < tamanioIzquierda
+                && iDerecha < tamanioDerecha) {
+            if (left[iIzquierda] <= right[iDerecha]) {
+                arr[iPrincipal++] = left[iIzquierda++];
             } else {
-                arr[k++] = right[j++];
+                arr[iPrincipal++] = right[iDerecha++];
             }
         }
 
         // Copia los elementos restantes de left (si los hay)
-        while (i < nLeft) {
-            arr[k++] = left[i++];
+        while (iIzquierda < tamanioIzquierda) {
+            arr[iPrincipal++] = left[iIzquierda++];
         }
 
         // Copia los elementos restantes de right (si los hay)
-        while (j < nRight) {
-            arr[k++] = right[j++];
+        while (iDerecha < tamanioDerecha) {
+            arr[iPrincipal++] = right[iDerecha++];
+        }
+        System.out.println();
+        for (int i : arr) {
+            System.out.print(i + ", ");
         }
     }
 }
