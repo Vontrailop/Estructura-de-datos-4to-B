@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        ListaSimple lista = new ListaSimple();
+        ListaSimple<Integer> lista = new ListaSimple();
 
         lista.insertarAlInicio(3);
         lista.insertarAlInicio(2);
