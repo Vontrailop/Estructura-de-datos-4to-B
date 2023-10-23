@@ -37,5 +37,67 @@ public class ListaCircular<T> {
         System.out.println();
     }
 
-    
+    public void modificarPorIndice(T nuevoDato, int indice) {
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+
+        if (indice < 0) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        Nodo<T> actual = cabeza;
+        int contador = 0;
+
+        do {
+            if (contador == indice) {
+                actual.dato = nuevoDato;
+                return;
+            }
+            actual = actual.siguiente;
+            contador++;
+        } while (actual != cabeza);
+
+        System.out.println("Índice fuera de rango.");
+    }
+
+    public void eliminarPorIndice(int indice) {
+        if (estaVacia()) {
+            System.out.println("La lista está vacía.");
+            return;
+        }
+
+        if (indice < 0) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
+        Nodo<T> actual = cabeza;
+        Nodo<T> anterior = null;
+        int contador = 0;
+
+        do {
+            if (contador == indice) {
+                if (contador == 0) {
+                    cabeza = actual.siguiente;
+                }
+
+                if (anterior != null) {
+                    anterior.siguiente = actual.siguiente;
+                    actual.siguiente.anterior = anterior;
+                }
+
+                return;
+            }
+
+            anterior = actual;
+            actual = actual.siguiente;
+            contador++;
+        } while (actual != cabeza);
+
+        System.out.println("Índice fuera de rango.");
+    }
+
 }

@@ -19,6 +19,8 @@ public class Main {
         for (String fruta : lista) {
             System.out.println(fruta);
         }
+
+        System.out.println(lista.contains("Platano"));
     }
 
     public static void ejemploLinkedList(){
