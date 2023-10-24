@@ -12,8 +12,9 @@ public class Main {
 
         String nuevaMateria = "Matemáticas";
         String[] nuevoArreglo = new String[materias.length + 1];
-        System.out.println(materias.length);
-        System.out.println(nuevoArreglo.length);
+
+        // System.out.println(materias.length);
+        // System.out.println(nuevoArreglo.length);
 
         // for (String string : nuevoArreglo) {
         // System.out.println("nada:" + string);
@@ -32,6 +33,8 @@ public class Main {
         // }
 
         materias = nuevoArreglo;
+
+
         for (String string : materias) {
             System.out.println(string);
         }
