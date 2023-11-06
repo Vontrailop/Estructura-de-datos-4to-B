@@ -1,38 +1,51 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+public class Pila<T> {
 
-public class Pila <T> {
+    private static final int TAMPILA = 10;
+    private int cima;
+    private T[] listaPila;
 
-        private Deque<T> pila = new ArrayDeque<>();
-
-    // Método para agregar un elemento a la pila (push)
-    public void apilar(T elemento) {
-        pila.push(elemento);
+    public Pila() {
+        cima = -1;
+        listaPila = (T[]) new Object[TAMPILA];
     }
 
-    // Método para retirar y devolver el elemento superior de la pila (pop)
-    public T desapilar() {
-        if (estaVacia()) {
-            throw new IllegalStateException("La pila está vacía");
+    public boolean pilaLlena() {
+        return cima == TAMPILA - 1;
+    }
+
+    public boolean pilaVacia() {
+        return cima == -1;
+    }
+
+    public void insertar(T dato) throws Exception {
+
+        if (pilaLlena()) {
+            throw new Exception("Desbordamiento de pila");
         }
-        return pila.pop();
+        cima++;
+        listaPila[cima] = dato;
     }
 
-    // Método para verificar si la pila está vacía
-    public boolean estaVacia() {
-        return pila.isEmpty();
-    }
-
-    // Método para obtener el tamaño de la pila
-    public int tamano() {
-        return pila.size();
-    }
-
-    // Método para obtener el elemento superior de la pila sin retirarlo
-    public T cima() {
-        if (estaVacia()) {
-            throw new IllegalStateException("La pila está vacía");
+    public T quitar() throws Exception {
+        T aux;
+        if (pilaVacia()) {
+            throw new Exception("Pila vacía, no se puede extrar.");
         }
-        return pila.peek();
+        aux = listaPila[cima];
+        cima--;
+        return aux;
+    }
+
+    public T cimaPila() throws Exception {
+        if (pilaVacia()) {
+            throw new Exception("Pila vacía, no hay elementos.");
+        }
+        return listaPila[cima];
+    }
+ 
+    public void muestra(){
+        for (T t : listaPila) {
+            System.out.println(t);
+        }
     }
 }
